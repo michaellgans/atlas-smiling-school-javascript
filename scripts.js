@@ -19,13 +19,29 @@ function getQuotes() {
         success: function(data) {
             console.log("It's working");
 
-            /* Changes text on first item */
-            $("#activeQuote").text(data[0].text);
-            console.log("Text should be changed 1");
+            let activeItem = `
+                <div class="carousel-item active">
+                    <div class="row mx-auto align-items-center">
+                        <div class="col-12 col-sm-2 col-lg-2 offset-lg-1 text-center">
+                            <img
+                            src="images/profile_5.jpg"
+                            class="d-block align-self-center"
+                            alt="Carousel Pic 1"
+                            />
+                        </div>
+                        <div class="col-12 col-sm-7 offset-sm-2 col-lg-9 offset-lg-0">
+                            <div class="quote-text">
+                                <p class="text-white" id="quote1">
+                                    ${data[0].text}
+                                </p>
+                            <h4 class="text-white font-weight-bold">Person Name</h4>
+                            <span class="text-white">weather presenter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
 
-            /* Changes text on second item */
-            $("#quote1").text(data[1].text);
-            console.log("Text should be changed 2");
+            $(".carousel-inner").append(activeItem);
 
             hideLoader();
             console.log("Hiding loader...")

@@ -42,7 +42,7 @@ function getQuotes() {
                     </div>
                 </div>`
 
-            $(".carousel-inner").append(activeItem);
+            $(".quotesCarousel").append(activeItem);
 
             /* Creates Other Items */
             for (let x = 1; x < data.length; x++) {
@@ -68,7 +68,7 @@ function getQuotes() {
                     </div>
                 </div>`
 
-                $(".carousel-inner").append(quoteItem);
+                $(".quotesCarousel").append(quoteItem);
             }
 
             hideLoader();

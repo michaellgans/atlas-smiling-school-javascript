@@ -82,4 +82,5 @@ function getQuotes() {
 
 $(document).ready(function() {
     getQuotes();
+    $(".slickSlides").slick();
 });

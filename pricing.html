@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>holberton-smiling</title>
+
     <!-- Custom and Font Styles  -->
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="font-style.css" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick-theme.css"/>
+
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap"
@@ -41,7 +45,12 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+
+    <!-- JQuery Script -->
+    <script src="scripts.js"></script>
   </head>
+
+  <!-- Body -->
   <body class="body">
     <header class="header pricing-header">
       <div class="container">
@@ -220,80 +229,20 @@
       </div>
     </header>
     <main class="main">
+
+      <!-- Quotes Section-->
       <section class="quotes section d-flex align-items-center">
         <div class="container">
+
+          <!-- Loader -->
+          <div class="loader"></div>
           <div
             id="carouselExampleControls"
             class="carousel slide"
             data-ride="carousel"
           >
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="row mx-auto align-items-center">
-                  <div class="col-12 col-sm-2 col-lg-2 offset-lg-1 text-center">
-                    <img
-                      src="images/profile_5.jpg"
-                      class="d-block align-self-center"
-                      alt="Carousel Pic 1"
-                    />
-                  </div>
-                  <div class="col-12 col-sm-7 offset-sm-2 col-lg-9 offset-lg-0">
-                    <div class="quote-text">
-                      <p class="text-white">
-                        « Those tutorials are concise and go straight to the
-                        point. I can’t think of a better place to learn smiling.
-                        And it’s so fun!
-                      </p>
-                      <h4 class="text-white font-weight-bold">Person Name</h4>
-                      <span class="text-white">weather presenter</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="row mx-auto align-items-center">
-                  <div class="col-12 col-sm-2 col-lg-2 offset-lg-1 text-center">
-                    <img
-                      src="images/profile_5.jpg"
-                      class="d-block align-self-center"
-                      alt="Carousel Pic 1"
-                    />
-                  </div>
-                  <div class="col-12 col-sm-7 offset-sm-2 col-lg-9 offset-lg-0">
-                    <div class="quote-text">
-                      <p class="text-white">
-                        « Those tutorials are concise and go straight to the
-                        point. I can’t think of a better place to learn smiling.
-                        And it’s so fun!
-                      </p>
-                      <h4 class="text-white font-weight-bold">Person Name</h4>
-                      <span class="text-white">weather presenter</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="row mx-auto align-items-center">
-                  <div class="col-12 col-sm-2 col-lg-2 offset-lg-1 text-center">
-                    <img
-                      src="images/profile_5.jpg"
-                      class="d-block align-self-center"
-                      alt="Carousel Pic 1"
-                    />
-                  </div>
-                  <div class="col-12 col-sm-7 offset-sm-2 col-lg-9 offset-lg-0">
-                    <div class="quote-text">
-                      <p class="text-white">
-                        « Those tutorials are concise and go straight to the
-                        point. I can’t think of a better place to learn smiling.
-                        And it’s so fun!
-                      </p>
-                      <h4 class="text-white font-weight-bold">Person Name</h4>
-                      <span class="text-white">weather presenter</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="carousel-inner priceCarousel">
+              <!-- Dynamically Generated Content -->
             </div>
             <a
               class="carousel-control-prev arrow-left"
@@ -461,5 +410,9 @@
         </div>
       </div>
     </footer>
+
+    <!-- Slick Script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </body>
 </html>

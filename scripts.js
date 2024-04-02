@@ -129,23 +129,35 @@ function getTutorials() {
                           <h6 class="pl-3 m-0 main-color">${data[x].author}</h6>
                         </div>
                         <div class="info pt-3 d-flex justify-content-between">
-                          <div class="rating">
+                          <div class="rating">`
 
-                          </div>
+                            /* Dynamically Create Stars */
+                            let starRating = data[x].star;
+
+                            for (let y = 0; y < starRating; y++) {
+                                tutorialItem += `<img
+                                                    src="images/star_on.png"
+                                                    alt="star on"
+                                                    width="15px"
+                                                />`
+                            }
+
+                            let starsOff = (5 - starRating);
+
+                            for (let z = 0; z < starsOff; z++) {
+                                tutorialItem += `<img
+                                                    src="images/star_off.png"
+                                                    alt="star off"
+                                                    width="15px"
+                                                />`
+                            }
+
+                          tutorialItem += `</div>
                           <span class="main-color">${data[x].duration}</span>
                         </div>
                       </div>
                     </div>
                 </div>`
-
-                let starRating = data[x].star;
-                console.log(`Rating: ${starRating}`);
-                let stars = $('.rating img');
-
-                for (let y = 0; y < starRating; y++) {
-                    console.log("A star was changed")
-                    $(stars[y]).attr("src", "images/star_on.png");
-                }
 
                 // $(".tutorialSlides").append(tutorialItem);
                 $(".tutorialSlides").slick("slickAdd", tutorialItem);

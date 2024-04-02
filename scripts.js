@@ -10,14 +10,14 @@ function hideLoader() {
 
 function getQuotes() {
     displayLoader();
-    console.log("showing loader...")
+    console.log("Showing loader for Quotes...")
 
     $.ajax({
         url: "https://smileschool-api.hbtn.info/quotes",
         method: "GET",
         dataType: "json",
         success: function(data) {
-            console.log("It's working");
+            console.log("It's working (quotes)");
 
             /* Creates Active Item */
             let activeItem = `
@@ -80,7 +80,104 @@ function getQuotes() {
     });
 }
 
+function getTutorials() {
+    displayLoader();
+    console.log("Showing loader for Tutorials...")
+
+    $.ajax({
+        url: "https://smileschool-api.hbtn.info/popular-tutorials",
+        method: "GET",
+        dataType: "json",
+        success: function(data) {
+            console.log("It's working (tutorials)");
+
+            /* Creates Items */
+            for (let x = 1; x < data.length; x++) {
+                console.log(x);
+
+                let tutorialItem = `
+                <div class="d-flex justify-content-center justify-content-md-end justify-content-lg-center">
+                    <div class="card">
+                      <img
+                        src="images/thumbnail_4.jpg"
+                        class="card-img-top"
+                        alt="Video thumbnail"
+                      />
+                      <div class="card-img-overlay text-center">
+                        <img
+                          src="images/play.png"
+                          alt="Play"
+                          width="64px"
+                          class="align-self-center play-overlay"
+                        />
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title font-weight-bold">
+                          Diagonal Smile
+                        </h5>
+                        <p class="card-text text-muted">
+                          Lorem ipsum dolor sit amet, consect adipiscing elit,
+                          sed do eiusmod.
+                        </p>
+                        <div class="creator d-flex align-items-center">
+                          <img
+                            src="images/profile_1.jpg"
+                            alt="Creator of
+                            Video"
+                            width="30px"
+                            class="rounded-circle"
+                          />
+                          <h6 class="pl-3 m-0 main-color">Phillip Massey</h6>
+                        </div>
+                        <div class="info pt-3 d-flex justify-content-between">
+                          <div class="rating">
+                            <img
+                              src="images/star_on.png"
+                              alt="star on"
+                              width="15px"
+                            />
+                            <img
+                              src="images/star_on.png"
+                              alt="star on"
+                              width="15px"
+                            />
+                            <img
+                              src="images/star_on.png"
+                              alt="star on"
+                              width="15px"
+                            />
+                            <img
+                              src="images/star_on.png"
+                              alt="star on"
+                              width="15px"
+                            />
+                            <img
+                              src="images/star_off.png"
+                              alt="star on"
+                              width="15px"
+                            />
+                          </div>
+                          <span class="main-color">8 min</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>`
+
+                // $(".tutorialSlides").append(tutorialItem);
+                $(".tutorialSlides").slick("slickAdd", tutorialItem);
+            }
+
+            hideLoader();
+            console.log("Hiding loader (tutorials)...")
+        },
+        error: function() {
+            console.log("Ooops (tutorials)....");
+        }
+    });
+}
+
 $(document).ready(function() {
     getQuotes();
+    getTutorials();
     $(".slickSlides").slick();
 });

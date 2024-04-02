@@ -92,8 +92,8 @@ function getTutorials() {
             console.log("It's working (tutorials)");
 
             /* Creates Items */
-            for (let x = 1; x < data.length; x++) {
-                console.log(x);
+            for (let x = 0; x < data.length; x++) {
+                console.log(`Card number is: ${data[x].id} Rating is: ${data[x].star}`);
 
                 let tutorialItem = `
                 <div class="d-flex justify-content-center justify-content-md-end justify-content-lg-center">
@@ -130,37 +130,22 @@ function getTutorials() {
                         </div>
                         <div class="info pt-3 d-flex justify-content-between">
                           <div class="rating">
-                            <img
-                              src="images/star_on.png"
-                              alt="star on"
-                              width="15px"
-                            />
-                            <img
-                              src="images/star_on.png"
-                              alt="star on"
-                              width="15px"
-                            />
-                            <img
-                              src="images/star_on.png"
-                              alt="star on"
-                              width="15px"
-                            />
-                            <img
-                              src="images/star_on.png"
-                              alt="star on"
-                              width="15px"
-                            />
-                            <img
-                              src="images/star_off.png"
-                              alt="star on"
-                              width="15px"
-                            />
+
                           </div>
                           <span class="main-color">${data[x].duration}</span>
                         </div>
                       </div>
                     </div>
                 </div>`
+
+                let starRating = data[x].star;
+                console.log(`Rating: ${starRating}`);
+                let stars = $('.rating img');
+
+                for (let y = 0; y < starRating; y++) {
+                    console.log("A star was changed")
+                    $(stars[y]).attr("src", "images/star_on.png");
+                }
 
                 // $(".tutorialSlides").append(tutorialItem);
                 $(".tutorialSlides").slick("slickAdd", tutorialItem);

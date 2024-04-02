@@ -61,7 +61,7 @@ function getQuotes() {
                                 <p class="text-white" id="quote1">
                                     ${data[x].text}
                                 </p>
-                            <h4 class="text-white font-weight-bold">${data[0].name}</h4>
+                            <h4 class="text-white font-weight-bold">${data[x].name}</h4>
                             <span class="text-white">${data[x].title}</span>
                             </div>
                         </div>

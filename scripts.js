@@ -99,35 +99,34 @@ function getTutorials() {
                 <div class="d-flex justify-content-center justify-content-md-end justify-content-lg-center">
                     <div class="card">
                       <img
-                        src="images/thumbnail_4.jpg"
+                        src="${data[x].thumb_url}"
                         class="card-img-top"
-                        alt="Video thumbnail"
+                        alt="Video thumbnail ${data[x].id}"
                       />
                       <div class="card-img-overlay text-center">
                         <img
                           src="images/play.png"
-                          alt="Play"
+                          alt="Play Video ${data[x].id}"
                           width="64px"
                           class="align-self-center play-overlay"
                         />
                       </div>
                       <div class="card-body">
                         <h5 class="card-title font-weight-bold">
-                          Diagonal Smile
+                            ${data[x].title}
                         </h5>
                         <p class="card-text text-muted">
-                          Lorem ipsum dolor sit amet, consect adipiscing elit,
-                          sed do eiusmod.
+                            ${data[x]["sub-title"]}
                         </p>
                         <div class="creator d-flex align-items-center">
                           <img
-                            src="images/profile_1.jpg"
+                            src="${data[x].author_pic_url}"
                             alt="Creator of
-                            Video"
+                            Video ${data[x].id}"
                             width="30px"
                             class="rounded-circle"
                           />
-                          <h6 class="pl-3 m-0 main-color">Phillip Massey</h6>
+                          <h6 class="pl-3 m-0 main-color">${data[x].author}</h6>
                         </div>
                         <div class="info pt-3 d-flex justify-content-between">
                           <div class="rating">
@@ -157,7 +156,7 @@ function getTutorials() {
                               width="15px"
                             />
                           </div>
-                          <span class="main-color">8 min</span>
+                          <span class="main-color">${data[x].duration}</span>
                         </div>
                       </div>
                     </div>

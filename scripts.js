@@ -172,8 +172,102 @@ function getTutorials() {
     });
 }
 
+function getLatest() {
+    displayLoader();
+    console.log("Showing loader for Latest...")
+
+    $.ajax({
+        url: "https://smileschool-api.hbtn.info/latest-videos",
+        method: "GET",
+        dataType: "json",
+        success: function(data) {
+            console.log("It's working (latest)");
+
+            /* Creates Items */
+            for (let x = 0; x < data.length; x++) {
+                console.log(`Card number is: ${data[x].id} Rating is: ${data[x].star}`);
+
+                let latestItem = `
+                <div class="d-flex justify-content-center justify-content-md-end justify-content-lg-center">
+                    <div class="card">
+                      <img
+                        src="${data[x].thumb_url}"
+                        class="card-img-top"
+                        alt="Video thumbnail ${data[x].id}"
+                      />
+                      <div class="card-img-overlay text-center">
+                        <img
+                          src="images/play.png"
+                          alt="Play Video ${data[x].id}"
+                          width="64px"
+                          class="align-self-center play-overlay"
+                        />
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title font-weight-bold">
+                            ${data[x].title}
+                        </h5>
+                        <p class="card-text text-muted">
+                            ${data[x]["sub-title"]}
+                        </p>
+                        <div class="creator d-flex align-items-center">
+                          <img
+                            src="${data[x].author_pic_url}"
+                            alt="Creator of
+                            Video ${data[x].id}"
+                            width="30px"
+                            class="rounded-circle"
+                          />
+                          <h6 class="pl-3 m-0 main-color">${data[x].author}</h6>
+                        </div>
+                        <div class="info pt-3 d-flex justify-content-between">
+                          <div class="rating">`
+
+                            /* Dynamically Create Stars */
+                            let starRating = data[x].star;
+
+                            for (let y = 0; y < starRating; y++) {
+                                latestItem += `<img
+                                                    src="images/star_on.png"
+                                                    alt="star on"
+                                                    width="15px"
+                                                />`
+                            }
+
+                            let starsOff = (5 - starRating);
+
+                            for (let z = 0; z < starsOff; z++) {
+                                latestItem += `<img
+                                                    src="images/star_off.png"
+                                                    alt="star off"
+                                                    width="15px"
+                                                />`
+                            }
+
+                            latestItem += `</div>
+                          <span class="main-color">${data[x].duration}</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>`
+
+                $(".latestSlides").slick("slickAdd", latestItem);
+            }
+
+            hideLoader();
+            console.log("Hiding loader (latest)...")
+        },
+        error: function() {
+            console.log("Ooops (latest)....");
+        }
+    });
+}
+
 $(document).ready(function() {
     getQuotes();
     getTutorials();
+    $(".slickSlides").slick();
+    getLatest();
+    getLatest();
     $(".slickSlides").slick();
 });

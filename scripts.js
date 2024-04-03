@@ -335,6 +335,99 @@ function getQuotes2() {
     });
 }
 
+function createCard() {
+    displayLoader();
+    console.log("Showing loader for courses...")
+
+    $.ajax({
+        url: "https://smileschool-api.hbtn.info/courses",
+        method: "GET",
+        dataType: "json",
+        success: function(data) {
+            console.log("It's working (courses)");
+
+            let courses = data.courses;
+
+            /* Creates Items */
+            for (let x = 0; x < courses.length; x++) {
+                console.log(`Card number is: ${courses[x].id} Rating is: ${courses[x].star}`);
+
+                let cardItem = `
+                <div class="d-flex justify-content-center justify-content-md-end justify-content-lg-center">
+                    <div class="card">
+                      <img
+                        src="${courses[x].thumb_url}"
+                        class="card-img-top"
+                        alt="Video thumbnail ${courses[x].id}"
+                      />
+                      <div class="card-img-overlay text-center">
+                        <img
+                          src="images/play.png"
+                          alt="Play Video ${courses[x].id}"
+                          width="64px"
+                          class="align-self-center play-overlay"
+                        />
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title font-weight-bold">
+                            ${courses[x].title}
+                        </h5>
+                        <p class="card-text text-muted">
+                            ${courses[x]["sub-title"]}
+                        </p>
+                        <div class="creator d-flex align-items-center">
+                          <img
+                            src="${courses[x].author_pic_url}"
+                            alt="Creator of
+                            Video ${courses[x].id}"
+                            width="30px"
+                            class="rounded-circle"
+                          />
+                          <h6 class="pl-3 m-0 main-color">${courses[x].author}</h6>
+                        </div>
+                        <div class="info pt-3 d-flex justify-content-between">
+                          <div class="rating">`
+
+                            /* Dynamically Create Stars */
+                            let starRating = courses[x].star;
+
+                            for (let y = 0; y < starRating; y++) {
+                                cardItem += `<img
+                                                    src="images/star_on.png"
+                                                    alt="star on"
+                                                    width="15px"
+                                                />`
+                            }
+
+                            let starsOff = (5 - starRating);
+
+                            for (let z = 0; z < starsOff; z++) {
+                                cardItem += `<img
+                                                    src="images/star_off.png"
+                                                    alt="star off"
+                                                    width="15px"
+                                                />`
+                            }
+
+                          cardItem += `</div>
+                          <span class="main-color">${courses[x].duration}</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>`
+
+                $(".results .container").append(cardItem);
+            }
+
+            hideLoader();
+            console.log("Hiding loader (courses)...")
+        },
+        error: function() {
+            console.log("Ooops (courses)....");
+        }
+    });
+}
+
 function getSearchInput() {
     $(".search-text-area").on("keydown", function(event){
         if (event.keyCode === 13) {
@@ -348,6 +441,28 @@ function getSearchInput() {
     });
 }
 
+function getTopicInput() {
+    $(".topicDropdown").on("click", function(event1) {
+        event1.preventDefault();
+        console.log("Topic was clicked");
+
+        let topicInput = $(this).data("value");
+
+        console.log(`Selected: ${topicInput}`);
+    });
+}
+
+function getSortInput() {
+    $(".mostDropdown").on("click", function(event2) {
+        event2.preventDefault();
+        console.log("Sort was clicked");
+
+        let sortInput = $(this).data("value");
+
+        console.log(`Selected: ${sortInput}`);
+    });
+}
+
 $(document).ready(function() {
     getQuotes();
     getTutorials();
@@ -357,4 +472,7 @@ $(document).ready(function() {
     $(".slickSlides").slick();
     getQuotes2();
     getSearchInput();
+    getTopicInput();
+    getSortInput();
+    createCard();
 });

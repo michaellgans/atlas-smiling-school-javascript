@@ -335,6 +335,19 @@ function getQuotes2() {
     });
 }
 
+function getSearchInput() {
+    $(".search-text-area").on("keydown", function(event){
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            console.log("Enter Key Pressed");
+
+            let searchInput = $(this).val();
+            
+            console.log(`This is the input from SEARCH: ${searchInput}`);
+        }
+    });
+}
+
 $(document).ready(function() {
     getQuotes();
     getTutorials();
@@ -343,4 +356,5 @@ $(document).ready(function() {
     getLatest();
     $(".slickSlides").slick();
     getQuotes2();
+    getSearchInput();
 });

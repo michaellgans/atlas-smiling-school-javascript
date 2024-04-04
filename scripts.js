@@ -485,17 +485,7 @@ function createFilteredCards() {
     let searchInput= "all";
     let sortInput= "most_popular";
 
-    /* Listen for Enter */
-    $(".search-text-area").on("keydown", function(event) {
-        if (event.keyCode === 13) {
-            event.preventDefault();
-            console.log("Enter Key Pressed");
-
-            searchInput = $(this).val();
-            
-            console.log(`User is searching: ${searchInput}.  Topic is: ${topicInput}.  Sorted by: ${sortInput}`);
-        }
-
+    function pullResults (){
         /* Display Loader */
         displayLoader();
 
@@ -511,7 +501,7 @@ function createFilteredCards() {
             success: function(data) {
                 
                 /* Clear Contents */
-                $(".results-here").remove();
+                $(".results-here").empty();
 
                 let courses = data.courses;
     
@@ -592,9 +582,23 @@ function createFilteredCards() {
                 hideLoader();
             },
             error: function() {
-                console.log("Create All Cards Error");
+                console.log("Create filtered Cards Error");
             }
         });
+    }
+
+    /* Listen for Enter */
+    $(".search-text-area").on("keydown", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            console.log("Enter Key Pressed");
+
+            searchInput = $(this).val();
+            
+            console.log(`User is searching: ${searchInput}.  Topic is: ${topicInput}.  Sorted by: ${sortInput}`);
+        
+            pullResults();
+        }
     });
 
     /* Listen for Click */
@@ -609,6 +613,8 @@ function createFilteredCards() {
         /* Set Dropdown to Click */
         console.log("Topic Reset");
         $("#activeTopic").text(topicInput);
+
+        pullResults();
     });
 
     /* Listen for Click */
@@ -623,6 +629,8 @@ function createFilteredCards() {
         /* Set Dropdown to Click */
         console.log("Sort Reset");
         $("#activeSort").text(sortInput);
+
+        pullResults();
     });
 }
 

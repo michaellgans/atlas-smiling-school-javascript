@@ -10,14 +10,12 @@ function hideLoader() {
 
 function getQuotes() {
     displayLoader();
-    console.log("Showing loader for Quotes...")
 
     $.ajax({
         url: "https://smileschool-api.hbtn.info/quotes",
         method: "GET",
         dataType: "json",
         success: function(data) {
-            console.log("It's working (quotes)");
 
             /* Creates Active Item */
             let activeItem = `
@@ -72,28 +70,24 @@ function getQuotes() {
             }
 
             hideLoader();
-            console.log("Hiding loader...")
         },
         error: function() {
-            console.log("Ooops....");
+            console.log("Get Quotes Error");
         }
     });
 }
 
 function getTutorials() {
     displayLoader();
-    console.log("Showing loader for Tutorials...")
 
     $.ajax({
         url: "https://smileschool-api.hbtn.info/popular-tutorials",
         method: "GET",
         dataType: "json",
         success: function(data) {
-            console.log("It's working (tutorials)");
 
             /* Creates Items */
             for (let x = 0; x < data.length; x++) {
-                console.log(`Card number is: ${data[x].id} Rating is: ${data[x].star}`);
 
                 let tutorialItem = `
                 <div class="d-flex justify-content-center justify-content-md-end justify-content-lg-center">
@@ -159,33 +153,28 @@ function getTutorials() {
                     </div>
                 </div>`
 
-                // $(".tutorialSlides").append(tutorialItem);
                 $(".tutorialSlides").slick("slickAdd", tutorialItem);
             }
 
             hideLoader();
-            console.log("Hiding loader (tutorials)...")
         },
         error: function() {
-            console.log("Ooops (tutorials)....");
+            console.log("Get Tutorial Error");
         }
     });
 }
 
 function getLatest() {
     displayLoader();
-    console.log("Showing loader for Latest...")
 
     $.ajax({
         url: "https://smileschool-api.hbtn.info/latest-videos",
         method: "GET",
         dataType: "json",
         success: function(data) {
-            console.log("It's working (latest)");
 
             /* Creates Items */
             for (let x = 0; x < data.length; x++) {
-                console.log(`Card number is: ${data[x].id} Rating is: ${data[x].star}`);
 
                 let latestItem = `
                 <div class="d-flex justify-content-center justify-content-md-end justify-content-lg-center">
@@ -254,25 +243,23 @@ function getLatest() {
                 $(".latestSlides").slick("slickAdd", latestItem);
             }
 
+            /* Hides Loader */
             hideLoader();
-            console.log("Hiding loader (latest)...")
         },
         error: function() {
-            console.log("Ooops (latest)....");
+            console.log("Get Latest Error");
         }
     });
 }
 
 function getQuotes2() {
     displayLoader();
-    console.log("Showing loader for Quotes2...")
 
     $.ajax({
         url: "https://smileschool-api.hbtn.info/quotes",
         method: "GET",
         dataType: "json",
         success: function(data) {
-            console.log("It's working (quotes2)");
 
             /* Creates Active Item */
             let activeItem = `
@@ -326,34 +313,34 @@ function getQuotes2() {
                 $(".priceCarousel").append(quoteItem);
             }
 
+            /* Hide Loader */
             hideLoader();
-            console.log("Hiding loader...")
         },
         error: function() {
-            console.log("Ooops....");
+            console.log("Get More Quotes Error");
         }
     });
 }
 
-function createCard() {
+function createAllCards() {
     displayLoader();
-    console.log("Showing loader for courses...")
 
     $.ajax({
         url: "https://smileschool-api.hbtn.info/courses",
         method: "GET",
         dataType: "json",
         success: function(data) {
-            console.log("It's working (courses)");
 
             let courses = data.courses;
 
+            /* Update number of videos */
+            $(".video-count").text(`${courses.length} videos`);
+
             /* Creates Items */
             for (let x = 0; x < courses.length; x++) {
-                console.log(`Card number is: ${courses[x].id} Rating is: ${courses[x].star}`);
 
                 let cardItem = `
-                <div class="d-flex justify-content-center justify-content-md-end justify-content-lg-center">
+                <div class="col-12 col-sm-4 col-lg-3 d-flex justify-content-center">
                     <div class="card">
                       <img
                         src="${courses[x].thumb_url}"
@@ -416,50 +403,226 @@ function createCard() {
                     </div>
                 </div>`
 
-                $(".results .container").append(cardItem);
+                $(".results-here").append(cardItem);
             }
 
+            /* Hides Loader */
             hideLoader();
-            console.log("Hiding loader (courses)...")
         },
         error: function() {
-            console.log("Ooops (courses)....");
+            console.log("Create All Cards Error");
         }
     });
 }
 
-function getSearchInput() {
-    $(".search-text-area").on("keydown", function(event){
+// function getSearchInput() {
+//     let searchInput;
+//     let course;
+
+//     $(".search-text-area").on("keydown", function(event){
+//         if (event.keyCode === 13) {
+//             event.preventDefault();
+//             console.log("Enter Key Pressed");
+
+//             searchInput = $(this).val();
+            
+//             console.log(`This is the input from SEARCH: ${searchInput}`);
+//         }
+
+//         displayLoader();
+
+//         $.ajax({
+//             url: "https://smileschool-api.hbtn.info/courses",
+//             method: "GET",
+//             dataType: "json",
+//             success: function(data) {    
+//                 let courses = data.courses;
+    
+//                 /* Update number of videos */
+//                 $(".video-count").text(`${courses.length} videos`);
+    
+//                 /* Creates Items */
+//                 for (let x = 0; x < courses.length; x++) {
+//                     if ($.inArray(searchInput, course.keywords)) {
+//                         console.log("I've found something!!");
+//                     }
+//                 }
+    
+//                 hideLoader();
+//                 console.log("Hiding loader (courses)...")
+//             },
+//             error: function() {
+//                 console.log("Ooops (courses)....");
+//             }
+//         });
+//     });
+// }
+
+// function getTopicInput() {
+//     $(".topicDropdown").on("click", function(event1) {
+//         event1.preventDefault();
+//         console.log("Topic was clicked");
+
+//         let topicInput = $(this).data("value");
+
+//         console.log(`Selected: ${topicInput}`);
+//     });
+// }
+
+// function getSortInput() {
+//     $(".mostDropdown").on("click", function(event2) {
+//         event2.preventDefault();
+//         console.log("Sort was clicked");
+
+//         let sortInput = $(this).data("value");
+
+//         console.log(`Selected: ${sortInput}`);
+//     });
+// }
+
+function createFilteredCards() {
+    let topicInput = "";
+    let searchInput= "all";
+    let sortInput= "most_popular";
+
+    /* Listen for Enter */
+    $(".search-text-area").on("keydown", function(event) {
         if (event.keyCode === 13) {
             event.preventDefault();
             console.log("Enter Key Pressed");
 
-            let searchInput = $(this).val();
+            searchInput = $(this).val();
             
-            console.log(`This is the input from SEARCH: ${searchInput}`);
+            console.log(`User is searching: ${searchInput}.  Topic is: ${topicInput}.  Sorted by: ${sortInput}`);
         }
-    });
-}
 
-function getTopicInput() {
+        /* Display Loader */
+        displayLoader();
+
+        $.ajax({
+            url: "https://smileschool-api.hbtn.info/courses",
+            method: "GET",
+            dataType: "json",
+            data: {
+                q: searchInput,
+                topic: topicInput,
+                sort: sortInput
+            },
+            success: function(data) {
+                
+                /* Clear Contents */
+                $(".results-here").remove();
+
+                let courses = data.courses;
+    
+                /* Update number of videos */
+                $(".video-count").text(`${courses.length} videos`);
+    
+                /* Creates Items */
+                for (let x = 0; x < courses.length; x++) {
+    
+                    let cardItem = `
+                    <div class="col-12 col-sm-4 col-lg-3 d-flex justify-content-center">
+                        <div class="card">
+                          <img
+                            src="${courses[x].thumb_url}"
+                            class="card-img-top"
+                            alt="Video thumbnail ${courses[x].id}"
+                          />
+                          <div class="card-img-overlay text-center">
+                            <img
+                              src="images/play.png"
+                              alt="Play Video ${courses[x].id}"
+                              width="64px"
+                              class="align-self-center play-overlay"
+                            />
+                          </div>
+                          <div class="card-body">
+                            <h5 class="card-title font-weight-bold">
+                                ${courses[x].title}
+                            </h5>
+                            <p class="card-text text-muted">
+                                ${courses[x]["sub-title"]}
+                            </p>
+                            <div class="creator d-flex align-items-center">
+                              <img
+                                src="${courses[x].author_pic_url}"
+                                alt="Creator of
+                                Video ${courses[x].id}"
+                                width="30px"
+                                class="rounded-circle"
+                              />
+                              <h6 class="pl-3 m-0 main-color">${courses[x].author}</h6>
+                            </div>
+                            <div class="info pt-3 d-flex justify-content-between">
+                              <div class="rating">`
+    
+                                /* Dynamically Create Stars */
+                                let starRating = courses[x].star;
+    
+                                for (let y = 0; y < starRating; y++) {
+                                    cardItem += `<img
+                                                        src="images/star_on.png"
+                                                        alt="star on"
+                                                        width="15px"
+                                                    />`
+                                }
+    
+                                let starsOff = (5 - starRating);
+    
+                                for (let z = 0; z < starsOff; z++) {
+                                    cardItem += `<img
+                                                        src="images/star_off.png"
+                                                        alt="star off"
+                                                        width="15px"
+                                                    />`
+                                }
+    
+                              cardItem += `</div>
+                              <span class="main-color">${courses[x].duration}</span>
+                            </div>
+                          </div>
+                        </div>
+                    </div>`
+    
+                    $(".results-here").append(cardItem);
+                }
+    
+                /* Hides Loader */
+                hideLoader();
+            },
+            error: function() {
+                console.log("Create All Cards Error");
+            }
+        });
+    });
+
+    /* Listen for Click */
     $(".topicDropdown").on("click", function(event1) {
         event1.preventDefault();
         console.log("Topic was clicked");
 
-        let topicInput = $(this).data("value");
+        topicInput = $(this).data("value");
 
-        console.log(`Selected: ${topicInput}`);
+        console.log(`User is searching: ${searchInput}.  Topic is: ${topicInput}.  Sorted by: ${sortInput}`);
+    
+        /* Set Dropdown to Click */
+        console.log("Topic Reset");
+        $("#activeTopic").text(topicInput);
     });
-}
 
-function getSortInput() {
+    /* Listen for Click */
     $(".mostDropdown").on("click", function(event2) {
         event2.preventDefault();
         console.log("Sort was clicked");
 
-        let sortInput = $(this).data("value");
+        sortInput = $(this).data("value");
 
-        console.log(`Selected: ${sortInput}`);
+        console.log(`User is searching: ${searchInput}.  Topic is: ${topicInput}.  Sorted by: ${sortInput}`);
+        
+        /* Set Dropdown to Click */
+        console.log("Sort Reset");
+        $("#activeSort").text(sortInput);
     });
 }
 
@@ -471,8 +634,6 @@ $(document).ready(function() {
     getLatest();
     $(".slickSlides").slick();
     getQuotes2();
-    getSearchInput();
-    getTopicInput();
-    getSortInput();
-    createCard();
+    createAllCards();
+    createFilteredCards();
 });

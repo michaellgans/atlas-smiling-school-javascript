@@ -1,4 +1,4 @@
-/* Functions for Homepage */
+/* JavaScript for Dynamic Content Generation */
 
 function displayLoader() {
     $(".loader").show();
@@ -414,71 +414,6 @@ function createAllCards() {
         }
     });
 }
-
-// function getSearchInput() {
-//     let searchInput;
-//     let course;
-
-//     $(".search-text-area").on("keydown", function(event){
-//         if (event.keyCode === 13) {
-//             event.preventDefault();
-//             console.log("Enter Key Pressed");
-
-//             searchInput = $(this).val();
-            
-//             console.log(`This is the input from SEARCH: ${searchInput}`);
-//         }
-
-//         displayLoader();
-
-//         $.ajax({
-//             url: "https://smileschool-api.hbtn.info/courses",
-//             method: "GET",
-//             dataType: "json",
-//             success: function(data) {    
-//                 let courses = data.courses;
-    
-//                 /* Update number of videos */
-//                 $(".video-count").text(`${courses.length} videos`);
-    
-//                 /* Creates Items */
-//                 for (let x = 0; x < courses.length; x++) {
-//                     if ($.inArray(searchInput, course.keywords)) {
-//                         console.log("I've found something!!");
-//                     }
-//                 }
-    
-//                 hideLoader();
-//                 console.log("Hiding loader (courses)...")
-//             },
-//             error: function() {
-//                 console.log("Ooops (courses)....");
-//             }
-//         });
-//     });
-// }
-
-// function getTopicInput() {
-//     $(".topicDropdown").on("click", function(event1) {
-//         event1.preventDefault();
-//         console.log("Topic was clicked");
-
-//         let topicInput = $(this).data("value");
-
-//         console.log(`Selected: ${topicInput}`);
-//     });
-// }
-
-// function getSortInput() {
-//     $(".mostDropdown").on("click", function(event2) {
-//         event2.preventDefault();
-//         console.log("Sort was clicked");
-
-//         let sortInput = $(this).data("value");
-
-//         console.log(`Selected: ${sortInput}`);
-//     });
-// }
 
 function createFilteredCards() {
     let topicInput = "";

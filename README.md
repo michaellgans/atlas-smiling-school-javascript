@@ -34,5 +34,10 @@ The designs were planned for Desktop, Tablet, and Mobile.
 
 ## Authors
 
-(Basic HTML/CSS for students)<br> Jhoan Zamora: [jzamora5](https://github.com/jzamora5)
-(Incorperated JavaScript, JQuery, and Slick Carousels)<br> Michael L. Gans: [michaellgans](https://github.com/michaellgans)
+### About the Author
+Michael L. Gans is a Full Stack Software Engineer who studied at Atlas School in Tulsa, Oklahoma.  He graduated Summa Cum Laude from Sam Houston State University with Honors and has a certification in Six Sigma.  Michael strives to never stop learning and never stop asking why!
+<br>
+Reach out to him at [LinkedIn](https://www.linkedin.com/in/michaellgans/)
+
+(Basic HTML/CSS for students) Jhoan Zamora: [jzamora5](https://github.com/jzamora5)
+(Incorperated JavaScript, JQuery, and Slick Carousels) Michael L. Gans: [michaellgans](https://github.com/michaellgans)

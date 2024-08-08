@@ -32,12 +32,10 @@ The designs were planned for Desktop, Tablet, and Mobile.
 | --- | --- | --- |
 | ![Desktop](https://i.ibb.co/y51S3HX/Courses-Desktop.png) | ![Tablet](https://i.ibb.co/28qK1g0/Courses-Tablet.png) | ![Mobile](https://i.ibb.co/f8zNgkx/Courses-Mobile.png) |
 
-## Authors
-
 ### About the Author
 Michael L. Gans is a Full Stack Software Engineer who studied at Atlas School in Tulsa, Oklahoma.  He graduated Summa Cum Laude from Sam Houston State University with Honors and has a certification in Six Sigma.  Michael strives to never stop learning and never stop asking why!
 <br>
 Reach out to him at [LinkedIn](https://www.linkedin.com/in/michaellgans/)
 
-(Basic HTML/CSS for students) Jhoan Zamora: [jzamora5](https://github.com/jzamora5)
+(Basic HTML/CSS for students) Jhoan Zamora: [jzamora5](https://github.com/jzamora5)<br>
 (Incorperated JavaScript, JQuery, and Slick Carousels) Michael L. Gans: [michaellgans](https://github.com/michaellgans)
